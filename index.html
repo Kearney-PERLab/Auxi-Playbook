@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Auxi Playbook - Self Help Guide</title>
+  <style>
+    :root {
+      --orange-55: #ff4b19;
+      --orange-60: #ff6034;
+      --neutral-black: #000;
+      --neutral-grey-10: #191a1b;
+      --neutral-grey-15: #242728;
+      --neutral-grey-20: #303436;
+      --neutral-grey-30: #494e50;
+      --neutral-grey-50: #798286;
+      --neutral-grey-80: #c9cdcf;
+      --neutral-grey-90: #e4e6e7;
+      --neutral-white: #fff;
+      --yellow-50: #ffc000;
+      --blue-50: #0095ff;
+      --green-50: #0df293;
+      --pink-50: #d926d9;
+      --bg-level-1: var(--neutral-black);
+      --bg-level-2: var(--neutral-grey-10);
+      --bg-level-3: var(--neutral-grey-15);
+      --text-primary: var(--neutral-white);
+      --text-secondary: var(--neutral-grey-50);
+      --brand: var(--orange-55);
+      --font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --space-1x: 4px; --space-2x: 8px; --space-3x: 12px; --space-4x: 16px;
+      --space-5x: 20px; --space-6x: 24px; --space-8x: 32px; --space-10x: 40px; --space-12x: 48px;
+      --radius-default: 4px; --radius-rounded: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-family);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-primary);
+      background: var(--bg-level-2);
+      -webkit-font-smoothing: antialiased;
+      padding: var(--space-8x);
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .header-bar {
+      background: var(--bg-level-1);
+      padding: var(--space-5x) var(--space-6x);
+      margin: calc(-1 * var(--space-10x));
+      margin-bottom: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .header-bar img { height: 40px; width: auto; }
+
+    .title-section {
+      background: var(--bg-level-1);
+      border-left: 4px solid var(--brand);
+      padding: var(--space-10x);
+      margin-bottom: var(--space-10x);
+      border-radius: var(--radius-default);
+      overflow: hidden;
+      position: relative;
+    }
+    .title-text h1 { font-size: 42px; font-weight: 700; margin-bottom: var(--space-2x); letter-spacing: -0.3px; }
+    .title-text .subtitle { font-size: 18px; color: var(--orange-60); font-weight: 500; margin-bottom: var(--space-4x); }
+    .title-text .meta { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
+    .title-logo {
+      position: absolute;
+      bottom: var(--space-6x);
+      right: var(--space-6x);
+    }
+    .title-logo img { height: 100px; width: auto; }
+
+    section { margin-bottom: var(--space-12x); }
+    .section-header { display: flex; align-items: center; gap: var(--space-4x); margin-bottom: var(--space-2x); }
+    .section-header h2 { font-size: 28px; font-weight: 700; }
+    .tier-badge {
+      display: inline-flex; padding: var(--space-1x) var(--space-3x);
+      border-radius: var(--radius-default); font-size: 11px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
+    }
+    .tier-badge.t1 { background: var(--brand); color: var(--neutral-black); }
+    .tier-badge.t2 { background: var(--yellow-50); color: var(--neutral-black); }
+    .tier-badge.t3 { background: var(--blue-50); color: var(--neutral-white); }
+    .tier-badge.t4 { background: var(--neutral-grey-50); color: var(--neutral-black); }
+    .tier-badge.checker { background: var(--green-50); color: var(--neutral-black); }
+    .tier-badge.genai { background: var(--pink-50); color: var(--neutral-white); }
+    .section-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-6x); }
+
+    table { width: 100%; border-collapse: collapse; background: var(--bg-level-3); border-radius: var(--radius-rounded); overflow: hidden; }
+    th {
+      background: var(--bg-level-1); color: var(--text-primary); padding: var(--space-4x) var(--space-5x);
+      text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
+      border-bottom: 1px solid var(--neutral-grey-20);
+    }
+    th:first-child { width: 50px; text-align: center; }
+    th:nth-child(2) { width: 220px; }
+    th:nth-child(3) { width: 200px; }
+    th:nth-child(4) { width: auto; }
+    td {
+      padding: var(--space-4x) var(--space-5x); border-bottom: 1px solid var(--neutral-grey-20);
+      font-size: 14px; vertical-align: middle;
+    }
+    td:first-child { text-align: center; font-weight: 600; color: var(--text-secondary); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover { background: var(--neutral-grey-20); }
+    
+    .feature-name { color: var(--text-primary); font-weight: 600; }
+    .feature-link {
+      color: var(--brand); font-weight: 600; cursor: pointer; 
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.15s ease;
+    }
+    .feature-link:hover { color: var(--orange-60); text-decoration: underline; }
+    .feature-link::before { content: "▶"; font-size: 10px; }
+    
+    .access-code {
+      font-family: 'SF Mono', 'Consolas', monospace; background: var(--neutral-grey-20);
+      padding: var(--space-1x) var(--space-2x); border-radius: var(--radius-default);
+      font-size: 12px; color: var(--neutral-grey-90); white-space: nowrap;
+    }
+    .why-text { color: var(--neutral-grey-80); font-size: 13px; }
+
+    .lightbox {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92); z-index: 1000; justify-content: center; align-items: center;
+      cursor: pointer;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; text-align: center; }
+    .lightbox-content img {
+      max-width: 100%; max-height: 80vh; border-radius: var(--radius-rounded);
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    }
+    .lightbox-title {
+      color: var(--neutral-white); margin-top: var(--space-4x);
+      font-size: 18px; font-weight: 600;
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 30px; font-size: 40px; color: var(--neutral-white);
+      cursor: pointer; transition: color 0.2s; z-index: 1001;
+    }
+    .lightbox-close:hover { color: var(--brand); }
+
+    .closing-section {
+      background: var(--bg-level-1); border-left: 4px solid var(--brand);
+      padding: var(--space-12x) var(--space-10x); border-radius: var(--radius-default); text-align: center;
+    }
+    .closing-section h2 { font-size: 36px; font-weight: 700; margin-bottom: var(--space-3x); }
+    .closing-section .subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: var(--space-8x); }
+    .highlight-box {
+      display: inline-block; background: var(--neutral-grey-15); border: 1px solid var(--neutral-grey-30);
+      padding: var(--space-5x) var(--space-8x); border-radius: var(--radius-rounded); margin-bottom: var(--space-6x);
+    }
+    .highlight-box p { font-size: 20px; font-weight: 600; color: var(--brand); margin: 0; }
+    .closing-section .note { font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-6x); }
+    .closing-section .links { margin-top: var(--space-8x); }
+    .closing-section a { color: var(--brand); font-size: 16px; font-weight: 600; text-decoration: none; }
+    .closing-section a:hover { text-decoration: underline; }
+    .closing-section .support { margin-top: var(--space-6x); font-size: 14px; color: var(--text-secondary); }
+    .closing-section .support a { font-size: 14px; }
+
+    .shortcut-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5x); }
+    .shortcut-card { background: var(--bg-level-3); border-radius: var(--radius-rounded); overflow: hidden; }
+    .shortcut-card h4 { padding: var(--space-3x) var(--space-4x); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin: 0; }
+    .shortcut-card h4.orange { background: var(--brand); color: var(--neutral-black); }
+    .shortcut-card h4.grey { background: var(--neutral-grey-30); color: var(--text-primary); }
+    .shortcut-card h4.blue { background: var(--blue-50); color: var(--neutral-white); }
+    .shortcut-card table { border-radius: 0; }
+    .shortcut-card th { display: none; }
+    .shortcut-card td { padding: var(--space-3x) var(--space-4x); font-size: 13px; }
+    .shortcut-card td:first-child { text-align: left; font-family: 'SF Mono', 'Consolas', monospace; color: var(--orange-60); width: 45%; }
+
+    .divider { height: 1px; background: var(--neutral-grey-20); margin: var(--space-10x) 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="title-section">
+      <div class="header-bar">
+        <img src="perlab-logo.svg" alt="PERLab">
+      </div>
+      <div class="title-content">
+        <div class="title-text">
+          <h1>The Auxi Playbook</h1>
+          <p class="subtitle">High-Impact, Low-Effort Wins for Consultants</p>
+          <p class="meta">Self Help Guide</p>
+        </div>
+      </div>
+      <div class="title-logo">
+        <img src="kearney-logo.gif" alt="Kearney">
+      </div>
+    </div>
+
+    <section>
+      <div class="section-header">
+        <h2>Tier 1: Instant Wins</h2>
+        <span class="tier-badge t1">Must Know</span>
+      </div>
+      <p class="section-subtitle">Learn in &lt;1 minute, use daily</p>
+      <table>
+        <tr><th>#</th><th>Feature</th><th>Access</th><th>Why It Matters</th></tr>
+        <tr><td>1</td><td class="feature-name">SmartBar</td><td><span class="access-code">CTRL + SPACE</span></td><td class="why-text">Gateway to everything. Type what you want, execute instantly.</td></tr>
+        <tr><td>2</td><td><span class="feature-link" data-gif="T1_fix_colors.gif" data-title="Fix Slide Colors">Fix Slide Colors</span></td><td><span class="access-code">Q</span></td><td class="why-text">One keystroke converts all colors to theme. Instant brand compliance.</td></tr>
+        <tr><td>3</td><td class="feature-name">Basic Alignments</td><td><span class="access-code">A + L/R/C/T/B/M</span></td><td class="why-text">Left, Right, Center, Top, Bottom, Middle. 5 clicks → 1 keystroke.</td></tr>
+        <tr><td>4</td><td><span class="feature-link" data-gif="T1_checker.gif" data-title="Checker">Checker</span></td><td><span class="access-code">SmartBar > Checker</span></td><td class="why-text">Catches duplicates, off-slide content, empty placeholders.</td></tr>
+        <tr><td>5</td><td><span class="feature-link" data-gif="T1_paste_content.gif" data-title="Paste Content Only">Paste Content Only</span></td><td><span class="access-code">CTRL+SHIFT+T</span></td><td class="why-text">Paste text without formatting. Essential across decks.</td></tr>
+        <tr><td>6</td><td><span class="feature-link" data-gif="T1_translate.gif" data-title="Translation">Translation</span></td><td><span class="access-code">L</span></td><td class="why-text">50+ languages. Auto-flips RTL content. Charts/tables intact.</td></tr>
+        <tr><td>7</td><td><span class="feature-link" data-gif="T1_saved_slides.gif" data-title="Save Slide">Save Slide</span></td><td><span class="access-code">\</span></td><td class="why-text">Save current slide to your personal library for reuse.</td></tr>
+        <tr><td>8</td><td><span class="feature-link" data-gif="T1_ai_recs.gif" data-title="AI Recommendations">AI Recommendations</span></td><td><span class="access-code">A + I</span></td><td class="why-text">ML suggests layouts based on content. Auto-populates.</td></tr>
+      </table>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-header">
+        <h2>Tier 2: High Value, Low Effort</h2>
+        <span class="tier-badge t2">Recommended</span>
+      </div>
+      <p class="section-subtitle">Learn in 2-5 minutes. Library & layout tools.</p>
+      <table>
+        <tr><th>#</th><th>Feature</th><th>Access</th><th>Why It Matters</th></tr>
+        <tr><td>1</td><td class="feature-name">Save/Insert Slide</td><td><span class="access-code">;</span></td><td class="why-text">Build personal slide library. Insert proven layouts instantly.</td></tr>
+        <tr><td>2</td><td class="feature-name">Save/Insert Snippets</td><td><span class="access-code">SmartBar > Snippet</span></td><td class="why-text">Reusable components: icons, callouts, frameworks.</td></tr>
+        <tr><td>3</td><td><span class="feature-link" data-gif="T2_add_row.gif" data-title="Add/Delete Rows">Add/Delete Rows</span></td><td><span class="access-code">CTRL+3 / ALT+3</span></td><td class="why-text">Table editing without right-click menus. 3x faster.</td></tr>
+        <tr><td>4</td><td class="feature-name">Add/Delete Columns</td><td><span class="access-code">CTRL+2 / ALT+2</span></td><td class="why-text">Same speed gains for column management.</td></tr>
+        <tr><td>5</td><td><span class="feature-link" data-gif="T2_key_takeaway.gif" data-title="Key Takeaways">Key Takeaways</span></td><td><span class="access-code">CTRL + 4/5/6/7</span></td><td class="why-text">Add formatted callout boxes in corners. Professional polish.</td></tr>
+        <tr><td>6</td><td><span class="feature-link" data-gif="T2_align_matrix.gif" data-title="Matrix Alignment">Matrix Alignment</span></td><td><span class="access-code">A + X</span></td><td class="why-text">Auto-arrange shapes into grid. Perfect for frameworks.</td></tr>
+        <tr><td>7</td><td><span class="feature-link" data-gif="T2_fix_grammar.gif" data-title="Fix Grammar">Fix Grammar</span></td><td><span class="access-code">SmartBar > Fix Grammar</span></td><td class="why-text">AI corrects spelling, grammar, punctuation in selection.</td></tr>
+        <tr><td>8</td><td><span class="feature-link" data-gif="T2_summarize.gif" data-title="Summarize">Summarize</span></td><td><span class="access-code">SmartBar > Summarize</span></td><td class="why-text">Condense paragraphs to key points. Great for exec summaries.</td></tr>
+      </table>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-header">
+        <h2>Tier 3: Deck-Wide & AI Text Tools</h2>
+        <span class="tier-badge t3">Advanced</span>
+      </div>
+      <p class="section-subtitle">Bulk editing and AI rewriting.</p>
+      <table>
+        <tr><th>#</th><th>Feature</th><th>Access</th><th>Why It Matters</th></tr>
+        <tr><td>1</td><td class="feature-name">Smart Selection</td><td><span class="access-code">Right-click menu</span></td><td class="why-text">Select all shapes of same type/color across deck.</td></tr>
+        <tr><td>2</td><td class="feature-name">Edit Colors (Deck)</td><td><span class="access-code">SmartBar > Edit Colors</span></td><td class="why-text">Find/replace colors across entire presentation.</td></tr>
+        <tr><td>3</td><td><span class="feature-link" data-gif="T3_edit_fonts.gif" data-title="Edit Font Families">Edit Font Families</span></td><td><span class="access-code">SmartBar > Edit Font</span></td><td class="why-text">Swap fonts deck-wide. Rebrand in seconds.</td></tr>
+        <tr><td>4</td><td><span class="feature-link" data-gif="T3_expand_text.gif" data-title="Expand Text">Expand Text</span></td><td><span class="access-code">SmartBar > Expand</span></td><td class="why-text">AI adds detail and elaboration to brief points.</td></tr>
+        <tr><td>5</td><td><span class="feature-link" data-gif="T3_rewrite_consultant.gif" data-title="Rewrite as Consultant">Rewrite as Consultant</span></td><td><span class="access-code">SmartBar > Rewrite</span></td><td class="why-text">Professional, structured language. Client-ready.</td></tr>
+        <tr><td>6</td><td class="feature-name">Rewrite as Banker/PM</td><td><span class="access-code">SmartBar > Rewrite</span></td><td class="why-text">Analytical, metrics-focused tone.</td></tr>
+        <tr><td>7</td><td class="feature-name">Clear Slide Content</td><td><span class="access-code">SmartBar > Clear</span></td><td class="why-text">Remove all text but keep layout/shapes intact.</td></tr>
+        <tr><td>8</td><td><span class="feature-link" data-gif="T3_merge_textboxes.gif" data-title="Merge Textboxes">Merge Textboxes</span></td><td><span class="access-code">. + T</span></td><td class="why-text">Combine multiple boxes into one. Clean up imports.</td></tr>
+      </table>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-header">
+        <h2>Tier 4: Power User Features</h2>
+        <span class="tier-badge t4">Expert</span>
+      </div>
+      <p class="section-subtitle">Higher learning curve, high payoff.</p>
+      <table>
+        <tr><th>#</th><th>Feature</th><th>Access</th><th>Why It Matters</th></tr>
+        <tr><td>1</td><td><span class="feature-link" data-gif="T4_tb_recs.gif" data-title="Type-Based Recs">Type-Based Recs</span></td><td><span class="access-code">B + I</span></td><td class="why-text">AI suggests layouts matching your content structure.</td></tr>
+        <tr><td>2</td><td><span class="feature-link" data-gif="T4_agenda.gif" data-title="Agenda Management">Agenda Management</span></td><td><span class="access-code">SmartBar > Agenda</span></td><td class="why-text">Auto-generate and update agenda slides from sections.</td></tr>
+        <tr><td>3</td><td class="feature-name">Save/Insert Sections</td><td><span class="access-code">SmartBar > Section</span></td><td class="why-text">Save multi-slide sequences. Modular deck building.</td></tr>
+        <tr><td>4</td><td><span class="feature-link" data-gif="T4_multi_selection.gif" data-title="Multi-Selection Mode">Multi-Selection Mode</span></td><td><span class="access-code">Right-click > Multi</span></td><td class="why-text">Select non-adjacent objects without CTRL. Faster editing.</td></tr>
+        <tr><td>5</td><td><span class="feature-link" data-gif="T4_resize_slides.gif" data-title="Resize Slides">Resize Slides</span></td><td><span class="access-code">SmartBar > Resize</span></td><td class="why-text">Convert 4:3 ↔ 16:9. Content scales intelligently.</td></tr>
+        <tr><td>6</td><td class="feature-name">Size Compression</td><td><span class="access-code">SmartBar > Compress</span></td><td class="why-text">Reduce file size for email. Keeps quality.</td></tr>
+        <tr><td>7</td><td><span class="feature-link" data-gif="T4_email_slides.gif" data-title="Email Slides">Email Slides</span></td><td><span class="access-code">SmartBar > Email</span></td><td class="why-text">Send selected slides directly. Skip export/attach.</td></tr>
+      </table>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-header">
+        <h2>Checker Deep Dive</h2>
+        <span class="tier-badge checker">Quality Gate</span>
+      </div>
+      <p class="section-subtitle">Pre-delivery quality gate. Run before every client send.</p>
+      <table>
+        <tr><th>#</th><th>Check</th><th>What It Catches</th><th>Why It Matters</th></tr>
+        <tr><td>1</td><td class="feature-name">Double Words</td><td class="why-text">Flags "the the" errors</td><td class="why-text">Embarrassing typos caught before client sees.</td></tr>
+        <tr><td>2</td><td class="feature-name">Multiple Spaces</td><td class="why-text">Inconsistent spacing</td><td class="why-text">Clean, professional text formatting.</td></tr>
+        <tr><td>3</td><td class="feature-name">Empty Placeholders</td><td class="why-text">Unreplaced template text</td><td class="why-text">No "[Insert text here]" embarrassments.</td></tr>
+        <tr><td>4</td><td class="feature-name">Out of Workplace</td><td class="why-text">Off-slide content</td><td class="why-text">Hidden objects that print unexpectedly.</td></tr>
+        <tr><td>5</td><td class="feature-name">Comments/Notes</td><td class="why-text">Review artifacts</td><td class="why-text">Internal notes don't reach clients.</td></tr>
+        <tr><td>6</td><td class="feature-name">Stamps</td><td class="why-text">Confidentiality markers</td><td class="why-text">Correct classification on every slide.</td></tr>
+        <tr><td>7</td><td class="feature-name">Font Size Limits</td><td class="why-text">Text below threshold</td><td class="why-text">Readability in presentations.</td></tr>
+        <tr><td>8</td><td class="feature-name">Transitions</td><td class="why-text">Unwanted animations</td><td class="why-text">Clean, professional playback.</td></tr>
+      </table>
+      <p style="margin-top: var(--space-4x);"><span class="feature-link" data-gif="S6_checker_full.gif" data-title="Checker - Full Demo">View Full Checker Demo</span></p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-header">
+        <h2>Gen AI: Complete Feature List</h2>
+        <span class="tier-badge genai">AI-Powered</span>
+      </div>
+      <p class="section-subtitle">Access all via SmartBar (CTRL+SPACE)</p>
+      <table>
+        <tr><th>#</th><th>Feature</th><th>Access</th><th>Why It Matters</th></tr>
+        <tr><td>1</td><td class="feature-name">Expand Text</td><td><span class="access-code">SmartBar > Expand</span></td><td class="why-text">Adds supporting detail to brief points.</td></tr>
+        <tr><td>2</td><td class="feature-name">Summarize</td><td><span class="access-code">SmartBar > Summarize</span></td><td class="why-text">Condenses long passages to key messages.</td></tr>
+        <tr><td>3</td><td class="feature-name">Fix Grammar</td><td><span class="access-code">SmartBar > Fix Grammar</span></td><td class="why-text">Spelling, punctuation, grammar correction.</td></tr>
+        <tr><td>4</td><td class="feature-name">Rewrite Text</td><td><span class="access-code">SmartBar > Rewrite</span></td><td class="why-text">Improves clarity and readability.</td></tr>
+        <tr><td>5</td><td><span class="feature-link" data-gif="S7_rewrite_verb.gif" data-title="Start with Verb">Start with Verb</span></td><td><span class="access-code">SmartBar > Rewrite > Verb</span></td><td class="why-text">Action-oriented bullet points.</td></tr>
+        <tr><td>6</td><td><span class="feature-link" data-gif="S7_rewrite_bullets.gif" data-title="Into Bullets">Into Bullets</span></td><td><span class="access-code">SmartBar > Rewrite > Bullets</span></td><td class="why-text">Converts paragraphs to structured points.</td></tr>
+        <tr><td>7</td><td class="feature-name">As Consultant</td><td><span class="access-code">SmartBar > Rewrite > Consultant</span></td><td class="why-text">Professional, insight-driven phrasing.</td></tr>
+        <tr><td>8</td><td class="feature-name">As Banker/PM</td><td><span class="access-code">SmartBar > Rewrite > Banker</span></td><td class="why-text">Analytical, metrics-focused language.</td></tr>
+      </table>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-header">
+        <h2>Quick Reference: Essential Shortcuts</h2>
+      </div>
+      <p class="section-subtitle">Print this. Keep it handy.</p>
+      <div class="shortcut-grid">
+        <div class="shortcut-card">
+          <h4 class="orange">Must-Know</h4>
+          <table>
+            <tr><td>CTRL+SPACE</td><td>SmartBar</td></tr>
+            <tr><td>Q</td><td>Fix Colors</td></tr>
+            <tr><td>L</td><td>Translate</td></tr>
+            <tr><td>;</td><td>Insert Slide</td></tr>
+            <tr><td>\</td><td>Save Slide</td></tr>
+          </table>
+          <h4 class="grey">Alignment</h4>
+          <table>
+            <tr><td>A + L/R/C</td><td>Left/Right/Center</td></tr>
+            <tr><td>A + T/B/M</td><td>Top/Bottom/Middle</td></tr>
+            <tr><td>A + X</td><td>Matrix Align</td></tr>
+          </table>
+        </div>
+        <div class="shortcut-card">
+          <h4 class="blue">Layout</h4>
+          <table>
+            <tr><td>CTRL+2 / ALT+2</td><td>Add/Del Column</td></tr>
+            <tr><td>CTRL+3 / ALT+3</td><td>Add/Del Row</td></tr>
+            <tr><td>CTRL+4/5/6/7</td><td>Key Takeaways</td></tr>
+          </table>
+          <h4 class="grey">Shapes</h4>
+          <table>
+            <tr><td>R</td><td>Rectangle</td></tr>
+            <tr><td>U</td><td>Rounded Rect</td></tr>
+            <tr><td>P / C</td><td>Pentagon/Chevron</td></tr>
+            <tr><td>T / O / G</td><td>Text/Oval/Triangle</td></tr>
+            <tr><td>N</td><td>New Slide</td></tr>
+          </table>
+        </div>
+        <div class="shortcut-card">
+          <h4 class="orange">AI</h4>
+          <table>
+            <tr><td>A + I</td><td>AI Recommendations</td></tr>
+            <tr><td>B + I</td><td>Type-Based Recs</td></tr>
+          </table>
+          <h4 class="grey">Other</h4>
+          <table>
+            <tr><td>/</td><td>Swap Shapes</td></tr>
+            <tr><td>CTRL + /</td><td>Swap Text Only</td></tr>
+            <tr><td>D + H/V</td><td>Distribute H/V</td></tr>
+            <tr><td>S + S</td><td>Same Size</td></tr>
+            <tr><td>S + W/H</td><td>Same Width/Height</td></tr>
+            <tr><td>CTRL+SHIFT+T</td><td>Paste Content</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="closing-section">
+      <h2>Remember</h2>
+      <p class="subtitle">You don't need to memorize shortcuts.</p>
+      <div class="highlight-box">
+        <p>Press CTRL + SPACE and type what you want.</p>
+      </div>
+      <p class="note">The shortcut appears next to each feature in the SmartBar.</p>
+      <div class="links">
+        <a href="https://auxi.ai" target="_blank">auxi.ai</a>
+      </div>
+      <p class="support">Contact <a href="https://direct.lc.chat/12300774" target="_blank">Global Help Desk</a> for Access Support</p>
+    </div>
+
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-title" id="lightbox-title"></div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.feature-link').forEach(link => {
+      link.addEventListener('click', function() {
+        const gif = this.getAttribute('data-gif');
+        const title = this.getAttribute('data-title');
+        lightboxImg.src = gif;
+        lightboxTitle.textContent = title;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+      }
+    });
+  </script>
+</body>
+</html>
