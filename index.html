@@ -175,6 +175,47 @@
     .shortcut-card td:first-child { text-align: left; font-family: 'SF Mono', 'Consolas', monospace; color: var(--orange-60); width: 45%; }
 
     .divider { height: 1px; background: var(--neutral-grey-20); margin: var(--space-10x) 0; }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      body { padding: var(--space-4x); }
+      
+      .title-section { 
+        padding: var(--space-8x); 
+        padding-top: var(--space-6x);
+        min-height: 280px;
+      }
+      .header-bar { 
+        margin: calc(-1 * var(--space-8x)); 
+        margin-bottom: var(--space-6x); 
+        padding: var(--space-4x) var(--space-6x); 
+      }
+      .header-bar img { height: 35px; }
+      .title-text h1 { font-size: 32px; margin-bottom: var(--space-3x); }
+      .title-text .subtitle { font-size: 16px; margin-bottom: var(--space-3x); }
+      .title-text .meta { font-size: 11px; }
+      .title-logo { 
+        position: static; 
+        margin-top: var(--space-8x);
+        text-align: right;
+      }
+      .title-logo img { height: 90px; }
+      
+      .section-header { flex-wrap: wrap; gap: var(--space-2x); }
+      .section-header h2 { font-size: 20px; }
+      
+      /* Horizontal scroll for tables */
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+      th, td { padding: var(--space-3x) var(--space-4x); }
+      .access-code { font-size: 11px; }
+      .why-text { white-space: normal; min-width: 200px; }
+      
+      .shortcut-grid { grid-template-columns: 1fr; }
+      
+      .closing-section { padding: var(--space-8x) var(--space-6x); }
+      .closing-section h2 { font-size: 24px; }
+      .highlight-box p { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
